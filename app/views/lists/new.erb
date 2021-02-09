@@ -1,0 +1,38 @@
+<h1>Create Your Own List</h1>
+
+<form action="/lists" method="POST">
+      <label for="title"><strong>Title:</stromg></label>
+        <input type="text" id="title" name="title"><br><br>
+      <strong>Select Category:</strong><br><br>
+      <label for="category">
+        <input type="radio" id="category" name="category" value="arts_and_entertainment">Arts and Entertainment
+      </label>
+
+      <label for="category">
+        <input type="radio" id="category" name="category" value="business">Business
+      </label>
+
+       <label for="category">
+        <input type="radio" id="category" name="category" value="food">Food
+      </label><br>
+
+       <label for="category">
+        <input type="radio" id="category" name="category" value="politics_and_history">Politics and History
+      </label>
+
+       <label for="category">
+        <input type="radio" id="category" name="category" value="recreation">Recreation
+      </label>
+
+       <label for="category">
+        <input type="radio" id="category" name="category" value="sports">Sports
+      </label>
+
+       <label for="category">
+        <input type="radio" id="category" name="category" value="other" checked>Other
+      </label><br><br>
+
+      <label for="content"><strong>Compose your list here:</strong></label><br><br>
+        <textarea id="content" name="content" rows="10" cols="50"></textarea>
+      <button type="submit">Submit Your List</button>
+    </form>

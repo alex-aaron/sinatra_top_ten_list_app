@@ -1,0 +1,13 @@
+<h1>Edit list</h1>
+<form action="/lists/:id" method="POST">
+<input type="hidden" id="hidden" name="_method" value="PATCH">
+    <label for="title"><strong>Title:</strong></label>
+        <input type="text" id="title" name="title" value="<%= @list.title %>"><br><br>
+    
+    <label for="content"><strong>Revise list below:</strong></label>
+        <textarea id="content" name="content" rows="10" cols="50"><%= @list.content %></textarea><br><br>
+    
+    <button type="submit">Submit Edits</button>
+
+
+</form>
