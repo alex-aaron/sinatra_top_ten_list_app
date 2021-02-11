@@ -1,11 +1,82 @@
 <h1>Edit list</h1>
-<form action="/lists/:id" method="POST">
+<form action="/lists/<%= @category %>/<%= @list.id %>" method="POST">
 <input type="hidden" id="hidden" name="_method" value="PATCH">
     <label for="title"><strong>Title:</strong></label>
         <input type="text" id="title" name="title" value="<%= @list.title %>"><br><br>
+
+        <strong>Select Category:</strong><br><br>
+            <label for="category">
+                <input type="radio" id="category" name="category" value="arts_and_entertainment" 
+                <%='checked' if @list.category == "arts_and_entertainment" %>>Arts and Entertainment
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="business"
+                <%='checked' if @list.category == "business" %>>Business
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="food"
+                <%='checked' if @list.category == "food" %>>Food
+            </label><br>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="politics_and_history"
+                <%='checked' if @list.category == "politics_and_history" %>>Politics and History
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="recreation"
+                <%='checked' if @list.category == "recreation" %>>Recreation
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="sports"
+                <%='checked' if @list.category == "sports" %>>Sports
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="math_and_sciences">Math and Sciences
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="geography">Geography
+            </label>
+
+            <label for="category">
+                <input type="radio" id="category" name="category" value="other"
+                <%='checked' if @list.category == "other" %>>Other
+            </label><br><br>
     
-    <label for="content"><strong>Revise list below:</strong></label>
-        <textarea id="content" name="content" rows="10" cols="50"><%= @list.content %></textarea><br><br>
+        <label for="entry1"><strong>1.</strong></label>
+            <input type="text" id="entry1" name="entries[rank1]" value="<%= @list_content[0] %>"><br><br>
+
+        <label for="entry2"><strong>2.</strong></label>
+            <input type="text" id="entry2" name="entries[rank2]" value="<%= @list_content[1] %>"><br><br>
+      
+        <label for="entry3"><strong>3.</strong></label>
+            <input type="text" id="entry3" name="entries[rank3]" value="<%= @list_content[2] %>"><br><br>
+      
+        <label for="entry4"><strong>4.</strong></label>
+            <input type="text" id="entry4" name="entries[rank4]" value="<%= @list_content[3] %>"><br><br>
+
+        <label for="entry5"><strong>5.</strong></label>
+            <input type="text" id="entry5" name="entries[rank5]" value="<%= @list_content[4] %>"><br><br>
+      
+        <label for="entry6"><strong>6.</strong></label>
+            <input type="text" id="entry6" name="entries[rank6]" value="<%= @list_content[5] %>"><br><br>
+      
+        <label for="entry7"><strong>7.</strong></label>
+            <input type="text" id="entry7" name="entries[rank7]" value="<%= @list_content[6] %>"><br><br>
+      
+        <label for="entry8"><strong>8.</strong></label>
+            <input type="text" id="entry8" name="entries[rank8]" value="<%= @list_content[7] %>"><br><br>
+      
+        <label for="entry9"><strong>9.</strong></label>
+            <input type="text" id="entry9" name="entries[rank9]" value="<%= @list_content[8] %>"><br><br>
+      
+        <label for="entry10"><strong>10.</strong></label>
+            <input type="text" id="entry10" name="entries[rank10]" value="<%= @list_content[9] %>"><br><br>
     
     <button type="submit">Submit Edits</button>
 

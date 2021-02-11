@@ -1,12 +1,23 @@
-<h1>Login</h1>
+<h1 class="login-text">Login</h1>
+<div class="login-container">
 <form action="/login" method="POST">
-    <label for="username"><strong>Username:</strong></label>
-        <input type="text" id="username" name="username"><br><br>
-    
-    <label for="email"><strong>Email:</strong></label>
-        <input type="text" id="email", name="email"><br><br>
+    <div class="login-item">
+        <label for="username"><strong>Username:</strong></label><br>
+            <input type="text" id="username" name="username"><br><br>
+    </div>
 
-    <label for="password"><strong>Password:</strong></label>
-        <input type="text" id="password" name="password"><br><br>
-    <input type="submit" value="Submit">
+    <div class="login-item">
+        <label for="email"><strong>Email:</strong></label><br>
+            <input type="text" id="email", name="email"><br><br>
+    </div>
+
+    <div class="login-item">
+        <label for="password"><strong>Password:</strong></label><br>
+            <input type="text" id="password" name="password"><br><br>
+    </div>
+
+    <div class="submit" id="login-submit">
+        <input type="submit" value="Submit">
+    </div>
 </form>
+</div>

@@ -10,42 +10,61 @@ class ListsController < ApplicationController
         erb :'lists/lists'
     end
 
-    #Show
-    get '/lists/:category' do
-        category = params[:category].gsub("-", "_")
-        @lists = List.send(category)
-        erb :'lists/show_category'
+    get '/lists/:slug' do
+        category_array = params[:slug].split("-")
+        @category = category_array.join("_")
+        @lists = List.send(@category).sort_by {|obj| obj.user_id}
+        @category_heading = ""
+        category_array.each do |word|
+            if word == "and"
+                @category_heading += word + " "
+            else
+                @category_heading += word.capitalize + " "
+            end
+        end
+        erb :'/lists/show_category'
     end
 
-    get '/lists/:id' do
+    get '/lists/:category/:id' do
         @list = List.find_by_id(params[:id])
-        erb 'lists/show_list'
+        @user = User.find_by_id(@list.user_id)
+        @list_content = @list.content.split("- ")
+        @category = create_category_heading(params[:category])
+        erb  :'lists/show_list'
     end
 
-    get '/lists/:id/edit' do
+    get '/lists/:category/:id/edit' do
         @list = List.find_by_id(params[:id])
+        @category = params[:category]
+        @list_content = @list.content.split("- ")
         if logged_in?
             if current_user == @list.user
                 erb :'lists/edit'
             else
-                redirect to "/lists/#{list.id}"
+                redirect to "/lists/#{@category}/#{@list.id}"
             end
         else
             redirect to '/login'
         end
     end
 
-    post '/lists' do 
+    post '/lists' do
         if logged_in?
-            if params[:content] == "" || params[:category] == "" || params[:title] == ""
-                redirect to '/new'
-                #add message
+            if params[:entries].find {|key, value| value == ""} 
+                redirect to '/new' #with message
             else
+                list_content = ""
+                params[:entries].each do |key, value|
+                    if value == params[:entries].values.last
+                        list_content += value
+                    else
+                        list_content += value + "- "
+                    end
+                end
                 @user = current_user
-                @list = List.create(title: params[:title], category: params[:category].to_sym, content: params[:content], user_id: @user.id)
+                @list = List.create(title: params[:title], category: params[:category].to_sym, content: list_content, user_id: @user.id)
                 @user.lists << @list
-                binding.pry
-                redirect to "/lists/#{@list.id}"
+                redirect to "/lists/#{@list.category}/#{@list.id}"
             end
         else
             redirect to '/login'
@@ -53,25 +72,36 @@ class ListsController < ApplicationController
     end
 
     #UPDATE
-    patch '/lists/:id' do
+    patch '/lists/:category/:id' do
         @list = List.find_by_id(params[:id])
-        if params[:content] == ""
-            redirect to "/lists/#{@list.id}/edit"
+        @category = @list.category
+        if params[:entries].find {|key, value| value == ""} 
+            redirect to "/lists/#{@list.category}/#{@list.id}/edit"
         else
-            @list.update(content: params[:content])
+            list_content = ""
+                params[:entries].each do |key, value|
+                    if value == params[:entries].values.last
+                        list_content += value
+                    else
+                        list_content += value + "- "
+                    end
+                end
+            @list.update(title: params[:title], category: params[:category].to_sym, content: list_content)
             @list.save
-            redirect to "/lists/#{@lists.id}"
+            redirect to "/lists/#{@list.category}/#{@list.id}"
         end
     end
 
     #DELETE
-    delete '/lists/:id' do
+    delete '/lists/:category/:id' do
         list = List.find_by_id(params[:id])
+        category = params[:category]
         if logged_in?
             if current_user.id == list.user_id
                 list.delete
-            else
                 redirect to '/lists'
+            else
+                redirect to "/lists/#{category}/#{paramas[:id]}"
             end
         else
             redirect to '/login'

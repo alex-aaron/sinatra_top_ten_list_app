@@ -22,6 +22,17 @@ class ApplicationController < Sinatra::Base
 		def current_user
 			User.find(session[:user_id])
     end
+
+    def create_category_heading(category_slug)
+      category_array = category_slug.split("_")
+      category_array.map do |word|
+        if word != "and"
+          word.capitalize
+        else
+          word
+        end
+      end.join(" ")
+    end
     
   end
 

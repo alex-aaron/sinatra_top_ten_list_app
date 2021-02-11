@@ -1,4 +1,13 @@
-<h1><%= @user.username %></h1>
-# <h2>Lists</h2>
-# <% @user.list.each do |list| %>
-# <% end>
+<h1>Lists by <%= @user.username %></h1>
+
+<ul>
+<% @lists.each do |list| %>
+    <li><%= list.title %> (<%= create_category_heading(list.category) %>)</li>
+    <% list_content = list.content.split("- ") %>
+    <ol>
+    <% list_content.each do |entry| %>
+            <li> <%= entry %></li>
+    <% end %>
+    </ol>
+<% end %>
+</ul>

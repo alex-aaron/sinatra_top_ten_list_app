@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinatra Top Ten List App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: #f9f4ef;
+        font-family: 'Playfair Display', serif;
+        <!-- font-family: 'Raleway', sans-serif; -->
+    }
+
+    #welcome-text {
+        text-align: center;
+    }
+
+    .description-text {
+        font-style: italic;
+    }
+
+    #welcome-description {
+        text-align: center;
+    }
+
+    .header {
+        padding: 10px;
+        background-color: #232946;
+    }
+
+    #nav-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .nav-list-item {
+        float: right;
+    }
+
+    .nav-link {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .welcome-button-container {
+        padding: 10px;
+    }
+    .welcome-button {
+        border-color: #232946;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 10px;
+        margin-left: 600px;
+        margin-right: 600px;
+    }
+
+    .welcome-button-text {
+        text-align: center;
+    }
+
+    .list-text {
+        text-align: center;
+    }
+
+    .list-categories-container {
+        padding: 10px;
+    }
+
+    .list-categories-item {
+        border-color: #232946;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 400px;
+        margin-right: 400px;
+    }
+
+    .list-categories-link {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .list-categories-item-text {
+        text-align: center;
+    }
+
+    .login-text {
+        text-align: center;
+    }
+
+    .login-container {
+        padding: 10px;
+        border-color: #232946;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 5px;
+        margin-right: 500px;
+        margin-left: 500px;
+    }
+
+    #login-submit {
+        text-indent: 255px;
+    }
+
+
+
+
+    
+
+
+</style>
+</head>
+<script src=""></script>
+<body>
+<div class="header">
+    <nav>
+        <ul id="nav-list">
+            <li class="nav-list-item"><a href="/" class ="nav-link">Home</a></li>
+            <li class="nav-list-item"><a href="/lists" class="nav-link">List Categories</a></li>
+            <li class="nav-list-item"><a href="/new" class="nav-link">Create List</a></li>
+        </ul>
+    </nav>
+</div>
+</div>
+<%= yield %>
+
+</body>
+</html>

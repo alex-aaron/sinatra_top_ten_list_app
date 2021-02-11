@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
     get '/users/:slug' do
         @user = User.find_by_slug(params[:slug])
+        @lists = @user.lists.sort_by {|obj| obj.category}
         erb :'users/show'
     end
 
@@ -46,7 +47,6 @@ class UsersController < ApplicationController
         else
             @user = User.create(username: params[:username], email: params[:email], password: params[:password])
             session[:user_id] = @user.id
-            binding.pry
             redirect to '/lists'
         end
     end

@@ -1,9 +1,13 @@
-<h1>List Category>
-
-<ol>
-    <li>List name by username</li>
-        <ul>
-            <li>Content</li>
-        </ul>
-    </li>
-<ol>
+<h1><%= @category_heading %></h1>
+<ul>
+<% @lists.each do |list| %>
+    <% user = User.find_by_id(list.user_id) %>
+    <li><a href="/lists/<%= list.category %>/<%= list.id %>"><%= list.title %></a> by <a href="/users/<%= user.slug %>"><%= User.find_by_id(list.user_id).username %></a></li>
+    <% list_content = list.content.split("- ") %>
+        <ol>
+            <% list_content.each do |entry| %>
+                <li><%= entry %></li>
+            <% end %>
+        </ol>
+<% end %>
+<ul>
