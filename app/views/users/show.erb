@@ -1,13 +1,15 @@
 <h1>Lists by <%= @user.username %></h1>
 
-<ul>
 <% @lists.each do |list| %>
-    <li><%= list.title %> (<%= create_category_heading(list.category) %>)</li>
-    <% list_content = list.content.split("- ") %>
-    <ol>
-    <% list_content.each do |entry| %>
-            <li> <%= entry %></li>
-    <% end %>
-    </ol>
+    <div class="card" style="width: 36rem;">
+        <div class="card-body">
+            <h4 class="card-title"><strong> <%= list.title %></strong></h5>
+            <% list_content = list.content.split("- ") %>
+            <ol>
+                <% list_content.each do |entry| %>
+                    <li class="show-user-page-list-item"><%= entry %></li>
+                <% end %>
+            </ol>
+        </div>
+    </div>
 <% end %>
-</ul>

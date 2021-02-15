@@ -1,8 +1,8 @@
-<h1>Create Your Own List</h1>
-
-<form action="/lists" method="POST">
+<h1 class="new-text">Create Your Own List</h1>
+<div class="new-edit-list-container">
+<form action="/lists" method="POST" class="new-list-form">
       <label for="title"><strong>Title:</strong></label>
-        <input type="text" id="title" name="title"><br><br>
+        <input type="text" id="title" name="title" class="new-list-title"><br><br>
       <strong>Select Category:</strong><br><br>
       <label for="category">
         <input type="radio" id="category" name="category" value="arts_and_entertainment">Arts and Entertainment
@@ -41,34 +41,35 @@
       </label><br><br>
 
       <label for="entry1"><strong>1.</strong></label>
-        <input type="text" id="entry1" name="entries[rank1]"><br><br>
+        <input type="text" id="entry1" name="entries[rank1]" class="new-list-entry"><br><br>
 
       <label for="entry2"><strong>2.</strong></label>
-        <input type="text" id="entry2" name="entries[rank2]"><br><br>
+        <input type="text" id="entry2" name="entries[rank2]" class="new-list-entry"><br><br>
       
       <label for="entry3"><strong>3.</strong></label>
-        <input type="text" id="entry3" name="entries[rank3]"><br><br>
+        <input type="text" id="entry3" name="entries[rank3]" class="new-list-entry"><br><br>
       
       <label for="entry4"><strong>4.</strong></label>
-        <input type="text" id="entry4" name="entries[rank4]"><br><br>
+        <input type="text" id="entry4" name="entries[rank4]" class="new-list-entry"><br><br>
       
       <label for="entry5"><strong>5.</strong></label>
-        <input type="text" id="entry5" name="entries[rank5]"><br><br>
+        <input type="text" id="entry5" name="entries[rank5]" class="new-list-entry"><br><br>
       
       <label for="entry6"><strong>6.</strong></label>
-        <input type="text" id="entry6" name="entries[rank6]"><br><br>
+        <input type="text" id="entry6" name="entries[rank6]" class="new-list-entry"><br><br>
       
       <label for="entry7"><strong>7.</strong></label>
-        <input type="text" id="entry7" name="entries[rank7]"><br><br>
+        <input type="text" id="entry7" name="entries[rank7]" class="new-list-entry"><br><br>
       
       <label for="entry8"><strong>8.</strong></label>
-        <input type="text" id="entry8" name="entries[rank8]"><br><br>
+        <input type="text" id="entry8" name="entries[rank8]" class="new-list-entry"><br><br>
       
       <label for="entry9"><strong>9.</strong></label>
-        <input type="text" id="entry9" name="entries[rank9]"><br><br>
+        <input type="text" id="entry9" name="entries[rank9]" class="new-list-entry"><br><br>
       
       <label for="entry10"><strong>10.</strong></label>
-        <input type="text" id="entry10" name="entries[rank10]"><br><br>
+        <input type="text" id="entry10" name="entries[rank10]" class="new-list-entry"><br><br>
 
       <button type="submit">Submit Your List</button>
     </form>
+    </div>

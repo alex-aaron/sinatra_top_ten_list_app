@@ -1,13 +1,9 @@
 <h1><%= @category_heading %></h1>
-<ul>
+<div class="category-page-container">
 <% @lists.each do |list| %>
     <% user = User.find_by_id(list.user_id) %>
-    <li><a href="/lists/<%= list.category %>/<%= list.id %>"><%= list.title %></a> by <a href="/users/<%= user.slug %>"><%= User.find_by_id(list.user_id).username %></a></li>
-    <% list_content = list.content.split("- ") %>
-        <ol>
-            <% list_content.each do |entry| %>
-                <li><%= entry %></li>
-            <% end %>
-        </ol>
+    <div class="category-page-list">
+        <button type="button" class="category-page-list-button btn btn-link btn-lg"><h4><strong><a href="/lists/<%= list.category %>/<%= list.id %>"><%= list.title %></a> by <a href="/users/<%= user.slug %>"><%= User.find_by_id(list.user_id).username %></a></strong></h4></button>
+    </div>
 <% end %>
-<ul>
+</div>

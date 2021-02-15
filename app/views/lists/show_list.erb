@@ -1,13 +1,23 @@
+<div class="card" id="show-list-page-card">
+    <div class="card-content">
+        <h3><strong><%= @list.title %> by <%= @user.username %></strong></h3>
+        <h4 class="show-list-page-category-text">Category: <%= @category %></h4>
+        <ol>
+        <% @list_content.each do |entry| %>
+                <li class="show-list-page-category-item"><%= entry %></li>
+        <% end %>
+        </ol>
+        <div class="show-list-button-container">
+            <div class="show-list-page-button">
+                <a href="/lists/<%= @list.category %>/<%= @list.id %>/edit" class="btn btn-primary"">Edit List</a>
+            </div>
 
-<h3><%= @list.title %> by <%= @user.username %></h3>
-<h4>Category: <%= @category %></h4>
-<ol>
-<% @list_content.each do |entry| %>
-        <li><%= entry %></li>
-<% end %>
-</ol>
-<a href="/lists/<%= @list.category %>/<%= @list.id %>/edit">Edit List</a><br><br>
-<form action="/lists/<%= @list.category %>/<%= @list.id %>" method="POST">
-    <input type="hidden" id="hidden" name="_method" value="DELETE">
-    <button type="submit">Delete List</button>
-<form>
+            <div class="show-list-page-button">
+                <form action="/lists/<%= @list.category %>/<%= @list.id %>" method="POST">
+                    <input type="hidden" id="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Delete List</button>
+                <form>
+            </div>
+        </div>
+    </div>
+</div>
