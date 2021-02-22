@@ -1,11 +1,9 @@
 class ListsController < ApplicationController
 
-    #CREATE
     get '/new' do
         erb :'lists/new'
     end
-    #READ
-    #Index
+    
     get '/lists' do
         erb :'lists/lists'
     end
