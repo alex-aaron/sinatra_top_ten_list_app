@@ -1,3 +1,8 @@
+<% if flash.has?(:notice) %>
+  <div class="flash-notice">
+    <button type="button" class="btn btn-warning"><%= flash[:notice] %></button>
+  </div>
+<% end %> 
 <h1 class="new-text">Create Your Own List</h1>
 <div class="new-edit-list-container">
 <form action="/lists" method="POST" class="new-list-form">

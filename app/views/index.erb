@@ -1,3 +1,8 @@
+<% if flash.has?(:notice) %>
+  <div class="flash-notice">
+    <button type="button" class="btn btn-warning"><%= flash[:notice] %></button>
+  </div>
+<% end %> 
 <h1 id="welcome-text">Welcome to Top Tenning!</h1>
 <p class="description-text" id="welcome-description"><strong>Create and share top ten lists on a variety of topics, and view other users' lists!</strong></p>
 <div class="welcome-button-container">

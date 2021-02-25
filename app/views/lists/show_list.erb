@@ -1,3 +1,8 @@
+<% if flash.has?(:notice) %>
+<div class="flash-notice">
+  <button type="button" class="btn btn-warning"><%= flash[:notice] %></button>
+</div>
+<% end %> 
 <div class="card" id="show-list-page-card">
     <div class="card-content">
         <h3><strong><%= @list.title %> by <%= @user.username %></strong></h3>

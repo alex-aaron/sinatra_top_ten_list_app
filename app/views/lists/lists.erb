@@ -1,3 +1,8 @@
+<% if flash.has?(:notice) %>
+  <div class="flash-notice">
+    <button type="button" class="btn btn-warning"><%= flash[:notice] %></button>
+  </div>
+<% end %> 
 <h1 class="list-text">List Categories</h1>
 <h4 class="list-text"><em>Select One of the Categories Below to Start Browsing Lists.</em></h4>
 <div class="list-categories-container">

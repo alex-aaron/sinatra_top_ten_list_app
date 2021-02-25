@@ -1,4 +1,6 @@
+require 'rack-flash'
 class ListsController < ApplicationController
+    use Rack::Flash
 
     get '/new' do
         erb :'lists/new'
@@ -39,9 +41,11 @@ class ListsController < ApplicationController
             if current_user == @list.user
                 erb :'lists/edit'
             else
+                flash[:notice] = "You are now allowed to edit another user's list."
                 redirect to "/lists/#{@category}/#{@list.id}"
             end
         else
+            flash[:notice] = "You must be logged in to edit your list."
             redirect to '/login'
         end
     end
@@ -49,7 +53,8 @@ class ListsController < ApplicationController
     post '/lists' do
         if logged_in?
             if params[:entries].find {|key, value| value == ""} 
-                redirect to '/new' #with message
+                flash[:notice] = "You did not fill out one or more fields."
+                redirect to '/new' 
             else
                 list_content = ""
                 params[:entries].each do |key, value|
@@ -65,15 +70,16 @@ class ListsController < ApplicationController
                 redirect to "/lists/#{@list.category}/#{@list.id}"
             end
         else
+            flash[:notice] = "You must be logged in to create a new list."
             redirect to '/login'
         end
     end
 
-    #UPDATE
     patch '/lists/:category/:id' do
         @list = List.find_by_id(params[:id])
         @category = @list.category
         if params[:entries].find {|key, value| value == ""} 
+            flash[:notice] = "You left one or more fields blank."
             redirect to "/lists/#{@list.category}/#{@list.id}/edit"
         else
             list_content = ""
@@ -90,7 +96,6 @@ class ListsController < ApplicationController
         end
     end
 
-    #DELETE
     delete '/lists/:category/:id' do
         list = List.find_by_id(params[:id])
         category = params[:category]
@@ -99,9 +104,11 @@ class ListsController < ApplicationController
                 list.delete
                 redirect to '/lists'
             else
-                redirect to "/lists/#{category}/#{paramas[:id]}"
+                flash[:notice] = "You are now allowed to delete another user's list."
+                redirect to "/lists/#{category}/#{params[:id]}"
             end
         else
+            flash[:notice] = "You must be logged in to delete your list."
             redirect to '/login'
         end
     end

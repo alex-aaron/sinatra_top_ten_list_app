@@ -1,3 +1,8 @@
+<% if flash.has?(:notice) %>
+  <div class="flash-notice">
+    <button type="button" class="btn btn-warning"><%= flash[:notice] %></button>
+  </div>
+<% end %> 
 <h1 class="login-text">Login</h1>
 <div class="login-signup-container">
 <form action="/login" method="POST">
